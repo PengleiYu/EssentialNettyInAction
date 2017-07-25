@@ -1,4 +1,4 @@
-package client;
+package EchoDemo.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
