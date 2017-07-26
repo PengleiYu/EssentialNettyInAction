@@ -13,16 +13,16 @@ import java.net.InetSocketAddress;
 /**
  * Created by yupenglei on 17/7/25.
  */
-public class EchoClient {
+class EchoClient {
     private final String host;
     private final int port;
 
-    public EchoClient(String host, int port) {
+    private EchoClient(String host, int port) {
         this.host = host;
         this.port = port;
     }
 
-    public void start() throws Exception {
+    private void start() throws Exception {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
             Bootstrap b = new Bootstrap();                //1

@@ -12,7 +12,7 @@ import java.net.InetSocketAddress;
 /**
  * Created by yupenglei on 17/7/25.
  */
-public class EchoServer {
+class EchoServer {
     private final int port;
 
     private EchoServer(int port) {
