@@ -1,4 +1,4 @@
-package NettyUserGuide.server
+package YuDemo.server
 
 import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled

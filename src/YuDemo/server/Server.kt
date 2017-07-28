@@ -1,4 +1,4 @@
-package NettyUserGuide.server
+package YuDemo.server
 
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.buffer.Unpooled
@@ -7,7 +7,6 @@ import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.SocketChannel
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import io.netty.handler.codec.DelimiterBasedFrameDecoder
-import io.netty.handler.stream.ChunkedWriteHandler
 
 /**
  * Created by yupenglei on 17/7/26.

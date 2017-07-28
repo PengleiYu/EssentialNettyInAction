@@ -1,4 +1,4 @@
-package NettyUserGuide.client
+package YuDemo.client
 
 import io.netty.buffer.ByteBuf
 import io.netty.channel.ChannelHandlerContext
