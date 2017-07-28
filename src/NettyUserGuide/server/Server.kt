@@ -52,7 +52,7 @@ private class Server(val host: String = "localhost", val port: Int = 8080) {
     private class ServerFileInitializer : ChannelInitializer<SocketChannel>() {
         override fun initChannel(p0: SocketChannel?) {
             val pipe = p0?.pipeline()!!
-            pipe.addLast(ChunkedWriteHandler())
+//            pipe.addLast(ChunkedWriteHandler())
             pipe.addLast(ServerHandler())
         }
     }

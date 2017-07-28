@@ -11,40 +11,27 @@ import io.netty.handler.stream.ChunkedStream
 import io.netty.handler.stream.ChunkedWriteHandler
 import java.io.File
 import java.io.FileInputStream
-import java.util.*
 
 /**
  * Created by yupenglei on 17/7/26.
  */
 private class Client(private val host: String = "localhost", private val port: Int = 8080) {
     fun StringRun() {
-        /**
-         * 写字符串
-         */
-        fun writeString(channel: Channel) {
-            listOf("Hello", "world", "Hello", "world", "Hello", "world", "Hello", "world")
-                    .asSequence()
-                    .map { it + "," }
-                    .forEach { channel.writeAndFlushString(it).addListener { println("send done") } }
-
-            val scanner = Scanner(System.`in`)
-            while (scanner.hasNextLine()) {
-                channel.writeAndFlushString(scanner.nextLine()).addListener { println("send done") }
+        run(StringInitializer()) {
+            with(it) {
+                listOf("Hello", "world", "Hello", "world", "Hello", "world", "Hello", "world")
+                        .asSequence()
+                        .map { it + "," }
+                        .forEach { writeAndFlushString(it).addListener { println("send done") } }
             }
         }
-        run(StringInitializer(), ::writeString)
     }
 
     fun fileRun() {
-        /**
-         * 写文件
-         */
-        fun writeFile(channel: Channel) {
+        run(ChunkedInitializer()) {
             val file = File(".gitignore")
-            channel.writeAndFlush(ChunkedStream(FileInputStream(file))).addListener { println(it.isSuccess) }
+            it.writeAndFlush(ChunkedStream(FileInputStream(file))).addListener { println(it.isSuccess) }
         }
-
-        run(ChunkedInitializer(), ::writeFile)
     }
 
     private fun run(channelInitializer: ChannelInitializer<SocketChannel>, f: (Channel) -> Unit) {
